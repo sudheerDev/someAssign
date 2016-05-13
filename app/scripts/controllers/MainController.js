@@ -13,7 +13,7 @@ angular.module('codeAssignApp')
     var index = 0;
     $scope.init = function () {
       $scope.user = {
-        'name': null
+        'name': ''
       };
 
       $scope.pageResults = [];
@@ -24,14 +24,14 @@ angular.module('codeAssignApp')
     };
 
     $scope.appendResults = function () {
-      $scope.pageResults = $scope.pageResults.concat($scope.sortedUserInfo[0].slice(index, index+50));
-      console.log($scope.pageResults, $scope.sortedUserInfo);
-      index = index + 50;
+      if ($scope.user.name === '') {
+        $scope.pageResults = $scope.pageResults.concat($scope.sortedUserInfo[0].slice(index, index+50));
+        index = index + 50;
+      }
     };
 
     $scope.searchChange = function () {
       var searchString = $scope.user.name;
-      console.log($scope.user.name === '');
       if ($scope.user.name === '') {
         $scope.pageResults = [];
         index = 0;
