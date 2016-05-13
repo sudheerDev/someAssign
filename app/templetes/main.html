@@ -1,0 +1,26 @@
+<div class="row">
+  <form class="form-inline col-sm-12">
+    <div class="form-group">
+      <label for="search">Search by</label>
+      <input type="text" class="form-control" id="search" ng-model="user.name" ng-change="searchChange()" ng-model-options="{debounce: 500}" placeholder="Name">
+    </div>
+  </form>
+</div>
+<div class="results" scrolly="appendResults()">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S No</th>
+        <th>Name</th>
+        <th>Created_at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in pageResults track by $index">
+        <th scope="row">{{$index+1}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.created_at * 1000 | date: 'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
