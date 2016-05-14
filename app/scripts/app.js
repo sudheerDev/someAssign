@@ -10,21 +10,13 @@
  */
 angular
   .module('codeAssignApp', [
-    'ngRoute'
+    'ngRoute',
+    'vs-repeat'
   ])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'templetes/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
+        controller: 'MainCtrl'
       });
-  });
+  }]);
