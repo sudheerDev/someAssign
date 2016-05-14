@@ -8,12 +8,12 @@
  * Controller of the codeAssignApp
  */
 angular.module('codeAssignApp')
-  .controller('MainCtrl', ['$scope', 'UserInfoFactory',function ($scope, UserInfoFactory) {
+  .controller('MainCtrl', ['$scope', 'UserInfoFactory', function ($scope, UserInfoFactory) {
 
     var index = 0;
     $scope.init = function () {
       $scope.user = {
-        'name': null
+        'name': ''
       };
 
       $scope.pageResults = [];
@@ -24,9 +24,11 @@ angular.module('codeAssignApp')
     };
 
     $scope.appendResults = function () {
-      $scope.pageResults = $scope.pageResults.concat($scope.sortedUserInfo[0].slice(index, index+50));
-      console.log($scope.pageResults, $scope.sortedUserInfo);
-      index = index + 50;
+      if ($scope.user.name === '') {
+        $scope.pageResults = $scope.pageResults.concat($scope.sortedUserInfo[0].slice(index, index + 50));
+        console.log($scope.pageResults, $scope.sortedUserInfo);
+        index = index + 50;
+      }
     };
 
     $scope.searchChange = function () {

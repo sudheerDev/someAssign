@@ -6,7 +6,8 @@
     "modernizr": "~2.8.1",
     "angular": "^1.5.5",
     "angular-route": "^1.5.5",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "angular-vs-repeat": "^1.1.7"
   },
   "overrides": {
     "bootstrap-sass": {
