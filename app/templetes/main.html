@@ -5,8 +5,9 @@
       <input type="text" class="form-control" id="search" ng-model="user.name" ng-change="searchChange()" ng-model-options="{debounce: 500}" placeholder="Name">
     </div>
   </form>
+  <p class="pull-right">Page {{pageIndex}} of {{noOfPages}}</p>
 </div>
-<div class="results" scrolly="appendResults()">
+<div class="results" ng-if="!loadingResults" scroll-down="computeResults({add: true})" scroll-top="computeResults({sub: true})" lazy-load-div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -17,10 +18,13 @@
     </thead>
     <tbody vs-repeat="37">
       <tr ng-repeat="user in pageResults track by $index">
-        <th scope="row">{{$index+1}}</th>
+        <th scope="row">{{index+$index+1}}</th>
         <td>{{user.name}}</td>
         <td>{{user.created_at * 1000 | date: 'medium' }}</td>
       </tr>
     </tbody>
   </table>
+</div>
+<div ng-if="loadingResults" class="results">
+  <p class="text-center pt250">Loading results..</p>
 </div>

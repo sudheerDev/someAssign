@@ -3,7 +3,7 @@
 angular.module('codeAssignApp')
   .factory('UserInfoFactory', ['$http', '$q', function ($http, $q) {
     var userInfo = {};
-    var baseURL = '/json';
+    var baseURL = 'json';
 
   userInfo.getJson = function () {
     return $http({
